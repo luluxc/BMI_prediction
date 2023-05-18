@@ -1,6 +1,7 @@
 streamlit
 Pillow
 tensorflow
+keras
 keras_vggface
 keras_applications
 keras_preprocessing
