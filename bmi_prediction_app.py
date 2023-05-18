@@ -2,9 +2,6 @@ import streamlit as st
 import cv2
 from PIL import Image
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.models import deserialize
-from keras.saving import legacy_serialization
 from tensorflow.keras.models import load_model
 import tensorflow_probability as tfp
 import keras.utils as image
@@ -13,13 +10,11 @@ import numpy as np
 import time
 import io
 
-deserialize_keras_object = serialization.deserialize_keras_object
-
 def pearson_corr(y_test, y_pred):
   corr = tfp.stats.correlation(y_test, y_pred)
   return corr
 
-model = tensorflow.keras.models.load_model('My_model_vgg16.h5', custom_objects={'pearson_corr': pearson_corr})
+model = load_model('My_model_vgg16.h5', custom_objects={'pearson_corr': pearson_corr})
 
 
 def predict_class(image, model):
