@@ -8,3 +8,4 @@ npx
 git+https://github.com/rcmalli/keras-vggface.git
 opencv-python-headless==4.5.4.60
 tensorflow-probability==0.6.0
+tf-nightly 
