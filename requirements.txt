@@ -1,10 +1,10 @@
 streamlit
 Pillow
 tensorflow
-keras
+Keras==2.2.0
+Keras-Applications==1.0.2
+Keras-Preprocessing==1.0.1
 keras_vggface
-keras_applications
-keras_preprocessing
 npx
 git+https://github.com/rcmalli/keras-vggface.git
 opencv-python-headless==4.5.4.60
