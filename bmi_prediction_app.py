@@ -14,7 +14,7 @@ def pearson_corr(y_test, y_pred):
   corr = tfp.stats.correlation(y_test, y_pred)
   return corr
 
-model = tf.keras.models.load_model('/content/gdrive/MyDrive/Colab Notebooks/My_BMI/My_model_vgg16.h5', custom_objects={'pearson_corr': pearson_corr})
+model = tf.keras.models.load_model('My_model_vgg16.h5', custom_objects={'pearson_corr': pearson_corr})
 
 
 def predict_class(image, model):
@@ -29,7 +29,7 @@ def predict_class(image, model):
 def process_img(file_image):
   image = Image.open(file_image)
   image = np.array(image)
-  faceCascade = cv2.CascadeClassifier('/content/gdrive/MyDrive/Colab Notebooks/My_BMI/haarcascade_frontalface_default.xml')
+  faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   faces = faceCascade.detectMultiScale(gray_image, scaleFactor=1.15, minNeighbors=5, minSize=(30, 30))
   if len(faces) == 0:
