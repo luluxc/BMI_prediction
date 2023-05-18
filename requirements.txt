@@ -1,5 +1,5 @@
 streamlit
-PIL
+Pillow
 tensorflow
 keras_vggface
 keras_applications
