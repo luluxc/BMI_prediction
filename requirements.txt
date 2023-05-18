@@ -6,5 +6,4 @@ keras_applications
 keras_preprocessing
 npx
 git+https://github.com/rcmalli/keras-vggface.git
-keras_applications --no-deps
 cv2
