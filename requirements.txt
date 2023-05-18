@@ -1,6 +1,7 @@
+Python==3.7
 streamlit
 Pillow
-tensorflow
+tensorflow==1.14
 Keras==2.12.0
 Keras-Applications==1.0.2
 Keras-Preprocessing==1.0.1
@@ -9,4 +10,4 @@ npx
 git+https://github.com/rcmalli/keras-vggface.git
 opencv-python-headless==4.5.4.60
 tensorflow-probability==0.6.0
-tf-nightly 
+-U tf-nightly 
