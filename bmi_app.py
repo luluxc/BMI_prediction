@@ -1,3 +1,7 @@
+filename = "/usr/local/lib/python3.7/dist-packages/keras_vggface/models.py"
+text = open(filename).read()
+open(filename, "w+").write(text.replace('keras.engine.topology', 'tensorflow.keras.utils'))
+
 import streamlit as st
 import cv2
 from PIL import Image
@@ -7,7 +11,6 @@ import tensorflow_probability as tfp
 import keras.utils as image
 from keras_vggface.utils import preprocess_input
 import numpy as np
-import requests
 
 def pearson_corr(y_test, y_pred):
   corr = tfp.stats.correlation(y_test, y_pred)
