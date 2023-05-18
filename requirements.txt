@@ -1,4 +1,4 @@
-streamlit==23.1.2
+streamlit
 PIL
 tensorflow
 keras_vggface
