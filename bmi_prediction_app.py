@@ -2,7 +2,7 @@ import streamlit as st
 import cv2
 from PIL import Image
 import tensorflow as tf
-from tf import keras
+from tensorflow import keras
 from keras.models import load_model
 import tensorflow_probability as tfp
 import keras.utils as image
