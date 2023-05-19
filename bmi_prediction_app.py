@@ -94,7 +94,7 @@ def main():
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
       download_img = col3.download_button(
-        :black['Download predicted image'], 
+        label='Download predicted image':black[text to be colored], 
         data=image_bytes,
         file_name=file_image.name.split('.')[0] + '_bmi.png',
         mime="image/png",
