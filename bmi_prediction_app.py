@@ -103,7 +103,7 @@ def main():
       image_bytes = image_bytes.getvalue()
       col3.write('Download the predicted image if you want!')
       download_img = col3.download_button(
-        label=':black[Download predicted image]', 
+        label=':black[Download image]', 
         data=image_bytes,
         file_name=file_image.name.split('.')[0] + '_bmi.png',
         mime="image/png",
@@ -122,7 +122,7 @@ def main():
       image_bytes = image_bytes.getvalue()
       col3.write('Download the predicted image if you want!')
       download_img = col3.download_button(
-        label='Download predicted image', 
+        label='Download image', 
         data=image_bytes,
         file_name=upload_img.name.split('.')[0]  + '_bmi.png',
         mime="image/png")
