@@ -8,6 +8,6 @@ keras_applications
 keras_vggface
 keras_preprocessing
 tensorflow_probability==0.13.0
-flatbuffers==23.5.9
+flatbuffers
 tf-estimator-nightly~=2.14.0.dev
 wrapt<1.15,>=1.11.0
