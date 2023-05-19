@@ -64,7 +64,7 @@ def main():
   st.markdown("""
   <style>
   .big-font {
-      font-size:150px !important;
+      font-size:100px !important;
   }
   </style>
   """, unsafe_allow_html=True)
@@ -93,8 +93,8 @@ def main():
       image_bytes = io.BytesIO()
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
-      download_img = st.download_button(
-        label='Download image', 
+      download_img = col3.download_button(
+        label='Download predicted image', 
         data=image_bytes,
         file_name=file_image.name.split('.')[0] + '_bmi.png',
         mime="image/png")
@@ -111,8 +111,8 @@ def main():
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
       st.write('Download the predicted image if you want!')
-      download_img = st.download_button(
-        label='Download image', 
+      download_img = col3.download_button(
+        label='Download predicted image', 
         data=image_bytes,
         file_name=upload_img.name.split('.')[0]  + '_bmi.png',
         mime="image/png")
