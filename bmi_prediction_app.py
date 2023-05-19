@@ -136,13 +136,15 @@ def main():
   
   
   col3.title('BMI calculator')
-  feet = col3.number_input(label='Height(feet)')
-  inch = col3.number_input(label='Height(inches)')
-  weight = col3.number_input(label='Weight(pounds)')
-  if col3.button('Calculate BMI'):
-    height = feet * 12 + inch
-    score = calculator(height, weight)
-    col3.success(f'Your BMI value is: {score}')
+  cal = col3.container()
+  with cal:
+    feet = col3.number_input(label='Height(feet)')
+    inch = col3.number_input(label='Height(inches)')
+    weight = col3.number_input(label='Weight(pounds)')
+    if col3.button('Calculate BMI'):
+      height = feet * 12 + inch
+      score = calculator(height, weight)
+      col3.success(f'Your BMI value is: {score}')
       
 if __name__=='__main__':
     main()
