@@ -25,7 +25,7 @@ def pearson_corr(y_test, y_pred):
 #   model = load_model('My_model_vgg16.h5')
   
 
-model = load_model('My_model_vgg16.h5', 'custom_objects'=={'pearson_corr': pearson_corr})
+model = load_model('My_model_vgg16.h5', custom_objects=pearson_corr)
 
 def predict_class(image, model):
   img = image.copy()
