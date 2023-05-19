@@ -130,12 +130,10 @@ def main():
   index = {'BMI':['16 ~ 18.5', '18.5 ~ 25', '25 ~ 30', '30 ~ 35', '35 ~ 40', '40~'],
            'WEIGHT STATUS':['Underweight', 'Normal', 'Overweight', 'Moderately obese', 'Severely obese', 'Very severely obese']}
   df = pd.DataFrame(data=index)
-  hide_table_row_index = """
-             <styly>
-             thead tr th:first-child {display:none}
-             tbody th {display:none}
-             </style?
-             """
+  hide_table_row_index = """<style>
+                            thead tr th:first-child {display:none}
+                            tbody th {display:none}
+                            </style>"""
   col3.markdown(hide_table_row_index, unsafe_allow_html=True)
   col3.table(df)
   expander = col3.expander('BMI Index')
