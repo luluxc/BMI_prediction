@@ -42,13 +42,15 @@ def process_img(file_image):
   faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   faces = faceCascade.detectMultiScale(gray_image, scaleFactor=1.15, minNeighbors=5, minSize=(30, 30))
+  if len(faces) == 0:
+    col2.write('No face detected! Please take it again.')
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
     bmi = predict_class(image[y:y+h, x:x+w], model)
     cv2.putText(image, f'BMI:{bmi}', (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
   pred_image = image
-  return len(faces), pred_image
+  return pred_image
 
 def calculator(height, weight):
   return 730 * weight / height**2
