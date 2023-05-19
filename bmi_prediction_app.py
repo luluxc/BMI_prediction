@@ -63,7 +63,7 @@ def main():
   if 'photo' not in st.session_state:
     st.session_state['photo'] = 'Not done'
 
-  st.set_page_config(layout="wide", page_icon='random', )
+  st.set_page_config(layout="centered", page_icon='random', )
   st.markdown("""
   <style>
   .big-font {
