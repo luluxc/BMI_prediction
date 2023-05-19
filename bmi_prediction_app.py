@@ -77,9 +77,9 @@ def main():
   file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)
 
   if st.session_state['photo'] == 'Done':
-    process_bar3 = col3.progress(0)
+    process_bar3 = col3.progress(0, text='🏃‍♀️')
 
-    process_bar2 = col2.progress(0)
+    process_bar2 = col2.progress(0, text='🏃')
 
     if file_image:
       for process in range(100):
