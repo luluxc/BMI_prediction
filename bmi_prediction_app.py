@@ -13,6 +13,7 @@ from keras_vggface.utils import preprocess_input
 import numpy as np
 import time
 import io
+import pandas as pd
 
 def pearson_corr(y_test, y_pred):
   corr = tfp.stats.correlation(y_test, y_pred)
@@ -59,7 +60,7 @@ def main():
   if 'photo' not in st.session_state:
     st.session_state['photo'] = 'Not done'
 
-  st.set_page_config(layout="centered", page_icon='random', )
+  st.set_page_config(layout="wide", page_icon='random', )
 
   st.markdown("""
   <style>
@@ -75,6 +76,17 @@ def main():
 
   upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state)
   file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)
+  index = {'BMI':['16<BMI<=18.5', '18.5<BMI<=25', '25<BMI<=30', '30<BMI<=35', '35<BMI<=40', '40<BMI'],
+           'WEIGHT STATUS':['Underweight', 'Normal', 'Overweight', 'Moderately obese', 'Severely obese', 'Very severely obese']}
+  df = pd.DataFrame(data=index)
+  col3.table(df)
+  expander = col3.expander('BMI Index')
+  expander.write(\"\"\"
+      The table above shows the standard weight status categories based on BMI, for people ages 20 and older.
+      Note: This is just the reference, please consult professionals for more health issue.
+  \"\"\")
+                 
+                 
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
