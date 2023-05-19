@@ -25,7 +25,6 @@ def pearson_corr(y_test, y_pred):
 #   model = load_model('My_model_vgg16.h5')
 
 model = load_model('My_model_vgg16.h5', compile=False)
-new_model = model.compile(optimizer='adam', loss='mean_squared_error', metrics=[pearson_corr])
 
 def predict_class(image, model):
   img = image.copy()
@@ -47,7 +46,7 @@ def process_img(file_image):
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
-    bmi = predict_class(image[y:y+h, x:x+w], new_model)
+    bmi = predict_class(image[y:y+h, x:x+w], model)
     cv2.putText(image, f'BMI:{bmi}', (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
   pred_image = image
   return pred_image
