@@ -43,7 +43,7 @@ def process_img(file_image):
   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   faces = faceCascade.detectMultiScale(gray_image, scaleFactor=1.15, minNeighbors=5, minSize=(30, 30))
   if len(faces) == 0:
-    st.warning('No face detected! Please take it again.')
+    col2.warning('No face detected! Please take it again.')
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
