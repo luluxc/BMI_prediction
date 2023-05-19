@@ -54,7 +54,7 @@ def process_img(file_image):
 
 def calculator(height, weight):
   score = 730 * weight / height**2
-  col3.success(f'Your BMI value is: {score}')
+  st.success(f'Your BMI value is: {score}')
   
 def change_photo_state():
   st.session_state['photo'] = 'Done'
@@ -63,11 +63,11 @@ def main():
   if 'photo' not in st.session_state:
     st.session_state['photo'] = 'Not done'
 
-  st.set_page_config(layout="centered", page_icon='random', )
+  st.set_page_config(layout="wide", page_icon='random', )
   st.markdown("""
   <style>
   .big-font {
-      font-size:90px !important;
+      font-size:80px !important;
   }
   </style>
   """, unsafe_allow_html=True)
@@ -89,13 +89,14 @@ def main():
   expander = col3.expander('BMI Index')
   expander.write('The table above shows the standard weight status categories based on BMI for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
   
-  feet = col3.number_input(label='Height(feet)')
-  inch = col3.number_input(label='Height(inches)')
-  weight = col3.number_input(label='Weight(pounds)')
-  
-  if col3.button('Calculate BMI'):
-    height = feet * 12 + inch
-    calculator(height, weight)
+  cal = col3.container()
+  with cal:
+    feet = col3.number_input(label='Height(feet)')
+    inch = col3.number_input(label='Height(inches)')
+    weight = col3.number_input(label='Weight(pounds)')
+    if col3.button('Calculate BMI'):
+      height = feet * 12 + inch
+      calculator(height, weight)
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
