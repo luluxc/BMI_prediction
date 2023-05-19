@@ -1,10 +1,10 @@
 streamlit
 Pillow
-tensorflow==1.14
-Keras==2.12.0
-Keras-Applications==1.0.2
-Keras-Preprocessing==1.0.1
+tensorflow
+Keras
+Keras-Applications
+Keras-Preprocessing
 keras_vggface
 npx
-opencv-python-headless==4.5.4.60
+opencv-python-headless
 tensorflow_probability
