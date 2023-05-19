@@ -81,7 +81,7 @@ def main():
   df = pd.DataFrame(data=index)
   col3.table(df)
   expander = col3.expander('BMI Index')
-  expander.write('The table above shows the standard weight status categories based on BMI, for people ages 20 and older.\nNote: This is just the reference, please consult professionals for more health issues.')           
+  expander.write('The table above shows the standard weight status categories based on BMI, for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
                  
 
   if st.session_state['photo'] == 'Done':
