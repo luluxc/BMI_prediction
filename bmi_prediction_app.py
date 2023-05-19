@@ -142,9 +142,14 @@ def main():
     inch = col3.number_input(label='Height(inches)')
     weight = col3.number_input(label='Weight(pounds)')
     if col3.button('Calculate BMI'):
-      height = feet * 12 + inch
-      score = calculator(height, weight)
-      col3.success(f'Your BMI value is: {score}')
+      if feet == 0.0:
+        col3.write('Please fill in your heright(feet)')
+      elif weight == 0.0:
+        col3.write('Please fill in your weight(pounds)')
+      else:
+        height = feet * 12 + inch
+        score = calculator(height, weight)
+        col3.success(f'Your BMI value is: {score}')
       
 if __name__=='__main__':
     main()
