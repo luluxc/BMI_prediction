@@ -81,13 +81,7 @@ def main():
   col2, col3 = st.columns([2,1])
 
   upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state)
-  file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)
-  index = {'BMI':['16 ~ 18.5', '18.5 ~ 25', '25 ~ 30', '30 ~ 35', '35 ~ 40', '40~'],
-           'WEIGHT STATUS':['Underweight', 'Normal', 'Overweight', 'Moderately obese', 'Severely obese', 'Very severely obese']}
-  df = pd.DataFrame(data=index)
-  col3.table(df)
-  expander = col3.expander('BMI Index')
-  expander.write('The table above shows the standard weight status categories based on BMI for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
+  file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)           
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
@@ -131,7 +125,14 @@ def main():
         data=image_bytes,
         file_name=upload_img.name.split('.')[0]  + '_bmi.png',
         mime="image/png")
-      
+  
+  
+  index = {'BMI':['16 ~ 18.5', '18.5 ~ 25', '25 ~ 30', '30 ~ 35', '35 ~ 40', '40~'],
+           'WEIGHT STATUS':['Underweight', 'Normal', 'Overweight', 'Moderately obese', 'Severely obese', 'Very severely obese']}
+  df = pd.DataFrame(data=index)
+  col3.table(df)
+  expander = col3.expander('BMI Index')
+  expander.write('The table above shows the standard weight status categories based on BMI for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')
       
   cal = col3.container()
   with cal:
