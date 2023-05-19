@@ -78,7 +78,8 @@ def main():
   st.write('*Since we only have the access to your face feature, the estimated value is biased')
   col2, col3 = st.columns([2,1])
 
-  upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state
+  upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state)
+  file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state) 
                                   
 #   st.title('Webcam Live Feed')
 #   run = st.checkbox('Run')
@@ -89,8 +90,7 @@ def main():
 #     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 #     FRAME_WINDOW.image(frame)
 #   else:
-#     st.write('Stopped')
-  file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)           
+#     st.write('Stopped')          
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
