@@ -63,7 +63,7 @@ def main():
   if 'photo' not in st.session_state:
     st.session_state['photo'] = 'Not done'
 
-  st.set_page_config(layout="wide", page_icon='random', )
+  st.set_page_config(layout="centered", page_icon='random', )
   st.markdown("""
   <style>
   .big-font {
@@ -95,7 +95,7 @@ def main():
   
   if col3.button('Calculate BMI'):
     height = feet * 12 + inch
-    calculate(height, weight)
+    calculator(height, weight)
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
