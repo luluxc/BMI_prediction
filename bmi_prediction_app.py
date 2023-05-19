@@ -94,10 +94,11 @@ def main():
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
       download_img = col3.download_button(
-        label='Download predicted image', 
+        label=black['Download predicted image'], 
         data=image_bytes,
         file_name=file_image.name.split('.')[0] + '_bmi.png',
-        mime="image/png")
+        mime="image/png",
+        use_container_width=True)
     elif upload_img:
       for process in range(100):
         time.sleep(0.01)
