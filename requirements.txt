@@ -8,3 +8,4 @@ keras_applications
 keras_vggface
 keras_preprocessing
 tensorflow_probability==0.13.0
+tf-nightly==2.14.0.dev20230518
