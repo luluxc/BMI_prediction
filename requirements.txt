@@ -1,6 +1,6 @@
 streamlit==1.4.0
 opencv-python-headless
-numpy==1.21.0
+numpy==1.23.1
 Pillow==8.4.0
 Keras>=2.6.0
 keras_applications
