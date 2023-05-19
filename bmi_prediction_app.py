@@ -93,7 +93,7 @@ def main():
         process_bar2.progress(process+1)
       col2.success('Taken the photo sucessfully!')
       pred_camera = process_img(file_image)
-      st.image(pred_camera, caption='Predicted photo')
+      col2.image(pred_camera, caption='Predicted photo')
       image = Image.fromarray(pred_camera)
       # Convert the PIL Image to bytes
       image_bytes = io.BytesIO()
@@ -113,7 +113,7 @@ def main():
         process_bar3.progress(process+1)
       col3.success('Uploaded the photo sucessfully!')
       pred_upload = process_img(upload_img)
-      st.image(pred_upload, caption='Predicted photo')
+      col2.image(pred_upload, caption='Predicted photo')
       image = Image.fromarray(pred_upload)
       # Convert the PIL Image to bytes
       image_bytes = io.BytesIO()
