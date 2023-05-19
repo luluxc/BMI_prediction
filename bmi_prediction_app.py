@@ -64,7 +64,6 @@ def main():
     st.session_state['photo'] = 'Not done'
 
   st.set_page_config(layout="wide", page_icon='random', )
-  st.
   st.markdown("""
   <style>
   .big-font {
