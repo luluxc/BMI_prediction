@@ -76,7 +76,8 @@ def main():
   bmi_img = Image.open('bmi.jpeg')
   st.image(bmi_img)
   #st.title('*BMI prediction 📸*')
-  st.text('Body Mass Index(BMI) estimates the total body fat and assesses the risks for diseases related to increase body fat. A higher BMI may indicate higher risk of developing many diseases.')
+  st.write('Body Mass Index(BMI) estimates the total body fat and assesses the risks for diseases related to increase body fat.')
+  st.write('A higher BMI may indicate higher risk of developing many diseases.')
   st.write('*Since we only have the access to your face feature, the estimated value is biased')
   col2, col3 = st.columns([2,1])
 
