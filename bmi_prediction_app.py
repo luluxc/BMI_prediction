@@ -24,8 +24,8 @@ import io
 # with tf.keras.utils.custom_object_scope({'pearson_corr': pearson_corr}):
 #   model = load_model('My_model_vgg16.h5')
 class pearson_corr(y_test, y_pred):
-    corr = tfp.stats.correlation(y_test, y_pred)
-    return corr
+      tfp.stats.correlation(y_test, y_pred)
+
 tf.keras.utils.get_custom_objects()['pearson_corr'] = pearson_corr
 model = load_model('My_model_vgg16.h5', custom_objects={'pearson_corr': pearson_corr})
 
