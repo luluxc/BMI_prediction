@@ -11,4 +11,4 @@ tensorflow_probability==0.13.0
 flatbuffers
 tf-estimator-nightly~=2.13.0.dev
 wrapt<1.15,>=1.11.0
-tf-nightly==2.14.0.dev20230516
+tf-nightly==2.13.0.dev20230426
