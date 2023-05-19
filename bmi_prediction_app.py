@@ -25,7 +25,7 @@ def pearson_corr(y_test, y_pred):
 #   model = load_model('My_model_vgg16.h5')
 
 model = load_model('My_model_vgg16.h5', compile=False)
-model = model.compile(optimizer='adam', loss='mean_squared_error', metrics=[pearson_corr])
+new_model = model.compile(optimizer='adam', loss='mean_squared_error', metrics=[pearson_corr])
 
 def predict_class(image, model):
   img = image.copy()
@@ -47,7 +47,7 @@ def process_img(file_image):
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
-    bmi = predict_class(image[y:y+h, x:x+w], model)
+    bmi = predict_class(image[y:y+h, x:x+w], new_model)
     cv2.putText(image, f'BMI:{bmi}', (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
   pred_image = image
   return pred_image
@@ -84,7 +84,7 @@ def main():
 
     if file_image:
       for process in range(100):
-        time.sleep(0.05)
+        time.sleep(0.01)
         process_bar2.progress(process+1)
       col2.success('Taken the photo sucessfully!')
       pred_camera = process_img(file_image)
@@ -101,7 +101,7 @@ def main():
         mime="image/png")
     elif upload_img:
       for process in range(100):
-        time.sleep(0.05)
+        time.sleep(0.01)
         process_bar3.progress(process+1)
       col3.success('Uploaded the photo sucessfully!')
       pred_upload = process_img(upload_img)
