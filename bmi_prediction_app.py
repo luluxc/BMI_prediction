@@ -43,7 +43,7 @@ def process_img(file_image):
   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   faces = faceCascade.detectMultiScale(gray_image, scaleFactor=1.15, minNeighbors=5, minSize=(30, 30))
   if len(faces) == 0:
-    st.subheader('No face detected! Please take it again.')
+    st.warning('No face detected! Please take it again.')
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
@@ -52,7 +52,10 @@ def process_img(file_image):
   pred_image = image
   return pred_image
 
-
+def calculator(height, weight):
+  score = 730 * weight / height**2
+  col3.success(f'Your BMI value is: {score}')
+  
 def change_photo_state():
   st.session_state['photo'] = 'Done'
 
@@ -61,7 +64,7 @@ def main():
     st.session_state['photo'] = 'Not done'
 
   st.set_page_config(layout="wide", page_icon='random', )
-
+  st.
   st.markdown("""
   <style>
   .big-font {
@@ -71,7 +74,11 @@ def main():
   """, unsafe_allow_html=True)
 
   st.markdown('<p class="big-font">BMI Prediction 📸</p>', unsafe_allow_html=True)
+  bmi_img = Image.open('bmi.jpeg')
+  st.image(bmi_img)
   #st.title('*BMI prediction 📸*')
+  st.subheader('Body Mass Index(BMI) estimates the total body fat and assesses the risks for diseases related to increase body fat. A higher BMI may indicate higher risk of developing many diseases.')
+  st.write('* Since we only have the access to your face feature, the estimated value is biased')
   col2, col3 = st.columns([2,1])
 
   upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state)
@@ -81,8 +88,15 @@ def main():
   df = pd.DataFrame(data=index)
   col3.table(df)
   expander = col3.expander('BMI Index')
-  expander.write('The table above shows the standard weight status categories based on BMI, for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
-                 
+  expander.write('The table above shows the standard weight status categories based on BMI for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
+  
+  feet = col3.number_input(label='Height(feet)')
+  inch = col3.number_input(label='Height(inches)')
+  weight = col3.number_input(label='Weight(pounds)')
+  
+  if col3.button('Calculate BMI'):
+    height = feet * 12 + inch
+    calculate(height, weight)
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
@@ -101,6 +115,7 @@ def main():
       image_bytes = io.BytesIO()
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
+      col3.divider()
       col3.write('Download the predicted image if you want!')
       download_img = col3.download_button(
         label=':black[Download image]', 
@@ -120,6 +135,7 @@ def main():
       image_bytes = io.BytesIO()
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
+      col3.divider()
       col3.write('Download the predicted image if you want!')
       download_img = col3.download_button(
         label='Download image', 
