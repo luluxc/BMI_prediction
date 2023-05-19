@@ -19,7 +19,7 @@ def pearson_corr(y_test, y_pred):
   return corr
 
 def custom_object_scope(custom_objects):
-  return keras_utils.CustomObjectScope(custom_objects)
+  return keras.utils.CustomObjectScope(custom_objects)
 
 with custom_object_scope({'pearson_corr': pearson_corr}):
   model = load_model('My_model_vgg16.h5')
