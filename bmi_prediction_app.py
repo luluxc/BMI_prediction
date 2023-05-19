@@ -53,8 +53,8 @@ def process_img(file_image):
   return pred_image
 
 def calculator(height, weight):
-  score = 730 * weight / height**2
-  st.success(f'Your BMI value is: {score}')
+  return 730 * weight / height**2
+  
   
 def change_photo_state():
   st.session_state['photo'] = 'Done'
@@ -143,7 +143,8 @@ def main():
     weight = col3.number_input(label='Weight(pounds)')
     if col3.button('Calculate BMI'):
       height = feet * 12 + inch
-      calculator(height, weight)
- 
+      score = calculator(height, weight)
+      st.success(f'Your BMI value is: {score}')
+      
 if __name__=='__main__':
     main()
