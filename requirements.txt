@@ -1,4 +1,4 @@
-streamlit>=0.90.0
+streamlit==1.22.0
 opencv-python-headless
 numpy>=1.21
 tensorflow==2.7.0
@@ -11,4 +11,4 @@ tensorflow_probability==0.13.0
 flatbuffers
 tf-estimator-nightly~=2.13.0.dev
 wrapt<1.15,>=1.11.0
-tf-nightly==2.13.0.dev20230217
+tf-nightly>=2.13.0.dev20230217
