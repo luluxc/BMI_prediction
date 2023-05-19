@@ -80,8 +80,8 @@ def main():
 
   upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state
                                   
-  col2.title('Webcam Live Feed')
-  run = col2.checkbox('Run')
+  st.title('Webcam Live Feed')
+  run = st.checkbox('Run')
   FRAME_WINDOW = col2.image([])
   camera = cv2.VideoCapture(0)
   while run:
