@@ -76,31 +76,21 @@ def main():
   bmi_img = Image.open('bmi.jpeg')
   st.image(bmi_img)
   #st.title('*BMI prediction 📸*')
-  st.subheader('Body Mass Index(BMI) estimates the total body fat and assesses the risks for diseases related to increase body fat. A higher BMI may indicate higher risk of developing many diseases.')
-  st.write('* Since we only have the access to your face feature, the estimated value is biased')
+  st.text('Body Mass Index(BMI) estimates the total body fat and assesses the risks for diseases related to increase body fat. A higher BMI may indicate higher risk of developing many diseases.')
+  st.write('*Since we only have the access to your face feature, the estimated value is biased')
   col2, col3 = st.columns([2,1])
 
   upload_img = col3.file_uploader('Upload a photo 🖼', on_change=change_photo_state)
   file_image = col2.camera_input('Take a pic of you 😊', on_change=change_photo_state)
-  index = {'BMI':['16<BMI<=18.5', '18.5<BMI<=25', '25<BMI<=30', '30<BMI<=35', '35<BMI<=40', '40<BMI'],
+  index = {'BMI':['16 ~ 18.5', '18.5 ~ 25', '25 ~ 30', '30 ~ 35', '35 ~ 40', '40~'],
            'WEIGHT STATUS':['Underweight', 'Normal', 'Overweight', 'Moderately obese', 'Severely obese', 'Very severely obese']}
   df = pd.DataFrame(data=index)
   col3.table(df)
   expander = col3.expander('BMI Index')
   expander.write('The table above shows the standard weight status categories based on BMI for people ages 20 and older. (Note: This is just the reference, please consult professionals for more health issues.)')           
-  
-  cal = col3.container()
-  with cal:
-    feet = col3.number_input(label='Height(feet)')
-    inch = col3.number_input(label='Height(inches)')
-    weight = col3.number_input(label='Weight(pounds)')
-    if col3.button('Calculate BMI'):
-      height = feet * 12 + inch
-      calculator(height, weight)
 
   if st.session_state['photo'] == 'Done':
     process_bar3 = col3.progress(0, text='🏃‍♀️')
-
     process_bar2 = col2.progress(0, text='🏃')
 
     if file_image:
@@ -135,13 +125,22 @@ def main():
       image_bytes = io.BytesIO()
       image.save(image_bytes, format='PNG')
       image_bytes = image_bytes.getvalue()
-      col3.divider()
       col3.write('Download the predicted image if you want!')
       download_img = col3.download_button(
         label='Download image', 
         data=image_bytes,
         file_name=upload_img.name.split('.')[0]  + '_bmi.png',
         mime="image/png")
+      
+      
+  cal = col3.container()
+  with cal:
+    feet = col3.number_input(label='Height(feet)')
+    inch = col3.number_input(label='Height(inches)')
+    weight = col3.number_input(label='Weight(pounds)')
+    if col3.button('Calculate BMI'):
+      height = feet * 12 + inch
+      calculator(height, weight)
  
 if __name__=='__main__':
     main()
