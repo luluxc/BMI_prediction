@@ -42,15 +42,13 @@ def process_img(file_image):
   faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   faces = faceCascade.detectMultiScale(gray_image, scaleFactor=1.15, minNeighbors=5, minSize=(30, 30))
-  if len(faces) == 0:
-    col2.warning('No face detected! Please take it again.')
   for (x, y, w, h) in faces:
     # box bounding the face
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)
     bmi = predict_class(image[y:y+h, x:x+w], model)
     cv2.putText(image, f'BMI:{bmi}', (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
   pred_image = image
-  return pred_image
+  return len(faces), pred_image
 
 def calculator(height, weight):
   return 730 * weight / height**2
@@ -92,7 +90,9 @@ def main():
         time.sleep(0.01)
         process_bar2.progress(process+1)
       col2.success('Taken the photo sucessfully!')
-      pred_camera = process_img(file_image)
+      num_face, pred_camera = process_img(file_image)
+      if num_face == 0:
+        col2.warning('No face detected! Please take it again.')
       col2.image(pred_camera, caption='Predicted photo')
       image = Image.fromarray(pred_camera)
       # Convert the PIL Image to bytes
