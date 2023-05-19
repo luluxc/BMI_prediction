@@ -9,4 +9,4 @@ keras_vggface
 keras_preprocessing
 tensorflow_probability==0.13.0
 tf-nightly==2.13.0.dev20230501
-flatbuffers>=23.1.21
+flatbuffers>=1.12
