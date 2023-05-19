@@ -1,3 +1,7 @@
+filename = '/home/appuser/venv/lib/python3.9/site-packages/keras_vggface/models.py'
+text = open(filename).read()
+open(filename, 'w+').write(text.replace('keras.engine.topology', 'tensorflow.keras.utils'))
+
 import streamlit as st
 import cv2
 from PIL import Image
@@ -5,11 +9,6 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import tensorflow_probability as tfp
 import keras.utils as image
-
-filename = '/home/appuser/venv/lib/python3.9/site-packages/keras_vggface/models.py'
-text = open(filename).read()
-open(filename, 'w+').write(text.replace('keras.engine.topology', 'tensorflow.keras.utils'))
-
 from keras_vggface.utils import preprocess_input
 import numpy as np
 import time
