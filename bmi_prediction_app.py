@@ -24,7 +24,7 @@ def pearson_corr(y_test, y_pred):
 # with custom_object_scope({'pearson_corr': pearson_corr}):
 #   model = load_model('My_model_vgg16.h5')
   
-with keras.utils.custom_object_scope({'pearson_corr': pearson_corr}):
+with tf.keras.utils.custom_object_scope({'pearson_corr': pearson_corr}):
   model = load_model('My_model_vgg16.h5')
 
 # class pearson_corr(y_test, y_pred):
